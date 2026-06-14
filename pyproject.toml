@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nats-demo"
+version = "0.1.0"
+description = "NATS JetStream KV demo with Hub/Leaf deployment modes."
+requires-python = ">=3.11"
+dependencies = [
+  "nats-py>=2.7,<3",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]

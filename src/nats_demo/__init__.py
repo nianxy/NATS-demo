@@ -1,0 +1,1 @@
+"""NATS KV demo package."""

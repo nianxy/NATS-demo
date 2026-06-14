@@ -1,0 +1,23 @@
+services:
+  leaf:
+    image: nats:2.10-alpine
+    command: ["-c", "/etc/nats/nats.conf"]
+    ports:
+      - "4223:4223"
+      - "7423:7423"
+      - "8223:8223"
+    volumes:
+      - ./nats/leaf-server/leaf.conf:/etc/nats/nats.conf:ro
+      - ./nats-data/leaf-server/leaf:/data
+
+  hub:
+    image: nats:2.10-alpine
+    command: ["-c", "/etc/nats/nats.conf"]
+    depends_on:
+      - leaf
+    ports:
+      - "4222:4222"
+      - "8222:8222"
+    volumes:
+      - ./nats/leaf-server/hub.conf:/etc/nats/nats.conf:ro
+      - ./nats-data/leaf-server/hub:/data
